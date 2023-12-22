@@ -4,7 +4,6 @@ import CucumberGermanPractice.carina.demo.gui.commons.HomePageBase;
 import CucumberGermanPractice.carina.demo.gui.commons.ProductsPageBase;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage extends HomePageBase {

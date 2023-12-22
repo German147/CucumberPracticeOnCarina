@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CucumberGermanPractice.carina.demo.gui.models.UserMapper">
+
+    <select id="findById" resultMap="UserResultMap">
+        SELECT * FROM webusers WHERE ID = #{id}
+    </select>
+    <select id="findByUserName" resultMap="UserResultMap">
+        SELECT * FROM webusers WHERE username = #{username}
+    </select>
+
+    <resultMap type="CucumberGermanPractice.carina.demo.gui.models.WebUsers"
+               id="UserResultMap" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+    </resultMap>
+
+</mapper>
