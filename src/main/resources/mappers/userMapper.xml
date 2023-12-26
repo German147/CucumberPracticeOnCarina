@@ -6,6 +6,7 @@
     <select id="findById" resultMap="UserResultMap">
         SELECT * FROM webusers WHERE ID = #{id}
     </select>
+
     <select id="findByUserName" resultMap="UserResultMap">
         SELECT * FROM webusers WHERE username = #{username}
     </select>
