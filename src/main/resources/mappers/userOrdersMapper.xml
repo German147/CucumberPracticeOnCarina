@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CucumberGermanPractice.carina.demo.gui.models.UserOrdersMapper">
+
+
+    <select id="findById" resultMap="UserOrdersResultMap">
+        SELECT * FROM userorders WHERE id = #{id}
+    </select>
+
+    <!--    Consulta de las ordenes similar a anterior-->
+
+
+    <resultMap type="CucumberGermanPractice.carina.demo.gui.models.UserOrders"
+               id="UserOrdersResultMap" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="product" property="product"/>
+        <result column="price" property="price"/>
+        <result column="user_id" property="userId"/>
+    </resultMap>
+
+</mapper>

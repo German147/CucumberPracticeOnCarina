@@ -6,6 +6,8 @@ import CucumberGermanPractice.carina.demo.gui.commons.ProductsPageBase;
 import CucumberGermanPractice.carina.demo.gui.desktop.HomePage;
 import CucumberGermanPractice.carina.demo.gui.desktop.ProductsPage;
 import CucumberGermanPractice.carina.demo.gui.models.UserMapper;
+import CucumberGermanPractice.carina.demo.gui.models.UserOrders;
+import CucumberGermanPractice.carina.demo.gui.models.UserOrdersMapper;
 import CucumberGermanPractice.carina.demo.gui.models.WebUsers;
 import com.zebrunner.carina.cucumber.CucumberRunner;
 import io.cucumber.java.en.*;
@@ -21,11 +23,29 @@ public class OpenSauceDemoWeb extends CucumberRunner {
         homePage.open();
         try (SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession(true)) {
             UserMapper userMapper = session.getMapper(UserMapper.class);
-            WebUsers user = userMapper.findById(2);
-            String username = user.getUsername();
-            String pass = user.getPassword();
-            homePage.setUserName(username);
-            homePage.setUserPassWord(pass);
+            WebUsers user = userMapper.findById(1);
+            System.out.println("Some letters....");
+
+            UserOrdersMapper ordersMapper = session.getMapper(UserOrdersMapper.class);
+            UserOrders orders = ordersMapper.findById(1);
+            System.out.println(orders.getProduct());
+            System.out.println("Some letters....");
+
+
+
+
+
+
+
+//            String username = user.getUsername();
+//            String pass = user.getPassword();
+//            homePage.setUserName(username);
+//            homePage.setUserPassWord(pass);
+
+//            UserOrders orders = user.getorders();
+//             String productName =  orders.getProduct();
+//             Assert.assertEquals(productName,"expectedListName");
+
         }
     }
 
