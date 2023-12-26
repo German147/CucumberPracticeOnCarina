@@ -9,6 +9,8 @@ import com.zebrunner.agent.core.annotation.TestLabel;
 import org.apache.ibatis.session.SqlSession;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class GetUserFromDBTest {
 
     @Test
@@ -18,6 +20,7 @@ public class GetUserFromDBTest {
             UserMapper userMapper = session.getMapper(UserMapper.class);
             WebUsers user = userMapper.findById(2);
             System.out.println("UserName is: " + user.getUsername() + " and its password is: " + user.getPassword());
+
         }
     }
 
@@ -27,6 +30,8 @@ public class GetUserFromDBTest {
             UserOrdersMapper orderMappers = session.getMapper(UserOrdersMapper.class);
             UserOrders order = orderMappers.findById(1);
             System.out.println(order.getProduct());
+            float userId = order.getUserId();
+            System.out.println(userId);
         }
     }
 }

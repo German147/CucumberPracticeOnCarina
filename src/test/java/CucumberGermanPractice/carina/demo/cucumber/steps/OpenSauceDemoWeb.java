@@ -24,23 +24,16 @@ public class OpenSauceDemoWeb extends CucumberRunner {
         try (SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession(true)) {
             UserMapper userMapper = session.getMapper(UserMapper.class);
             WebUsers user = userMapper.findById(1);
-            System.out.println("Some letters....");
+            String username = user.getUsername();
+            String pass = user.getPassword();
+            homePage.setUserName(username);
+            homePage.setUserPassWord(pass);
 
             UserOrdersMapper ordersMapper = session.getMapper(UserOrdersMapper.class);
             UserOrders orders = ordersMapper.findById(1);
             System.out.println(orders.getProduct());
             System.out.println("Some letters....");
 
-
-
-
-
-
-
-//            String username = user.getUsername();
-//            String pass = user.getPassword();
-//            homePage.setUserName(username);
-//            homePage.setUserPassWord(pass);
 
 //            UserOrders orders = user.getorders();
 //             String productName =  orders.getProduct();
@@ -56,6 +49,6 @@ public class OpenSauceDemoWeb extends CucumberRunner {
 
     @Then("Products page should be opened")
     public void products_page_should_be_opened() {
-        Assert.assertEquals(productsPage.getProductTitle(),"Products");
+        Assert.assertEquals(productsPage.getProductTitle(), "Products");
     }
 }
