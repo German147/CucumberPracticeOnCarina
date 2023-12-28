@@ -29,10 +29,10 @@ public class OpenSauceDemoWeb extends CucumberRunner {
             homePage.setUserName(username);
             homePage.setUserPassWord(pass);
 
-            UserOrdersMapper ordersMapper = session.getMapper(UserOrdersMapper.class);
-            UserOrders orders = ordersMapper.findById(1);
-            System.out.println(orders.getProduct());
-            System.out.println("Some letters....");
+//            UserOrdersMapper ordersMapper = session.getMapper(UserOrdersMapper.class);
+//            UserOrders orders = ordersMapper.findById(1);
+//            System.out.println(orders.getProduct());
+//            System.out.println("Some letters....");
 
 
 //            UserOrders orders = user.getorders();

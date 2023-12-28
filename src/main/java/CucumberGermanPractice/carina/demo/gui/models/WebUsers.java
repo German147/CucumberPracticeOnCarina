@@ -1,12 +1,13 @@
 package CucumberGermanPractice.carina.demo.gui.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WebUsers {
     private Long id;
     private String username;
     private String password;
-    private List<UserOrders> orders;
+    private List<UserOrders> orders = new ArrayList<>();
 
     public WebUsers() {
     }
