@@ -4,5 +4,4 @@ Feature: feature to test login functionality
 
     Given user is on login page
     When user enters username and password
-    And clicks on login button
-    Then user is navigating to the home page
+    Then Product title must be present

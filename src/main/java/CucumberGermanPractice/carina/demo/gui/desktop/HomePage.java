@@ -13,7 +13,7 @@ public class HomePage extends HomePageBase {
     @FindBy(css = "#password")
     private ExtendedWebElement password;
 
-    @FindBy(css = "#login-button")
+    @FindBy(id = "login-button")
     private ExtendedWebElement loginBtn;
 
 
