@@ -3,6 +3,6 @@ Feature: SauceDemo web Page Practice
 
   @demo
   Scenario: SauceDemo open page - passing
-    Given I am on main page
-    When I log in.
-    Then Products page should be opened
+    Given user is on login page
+    When user enters username and password
+    Then Product title must be present

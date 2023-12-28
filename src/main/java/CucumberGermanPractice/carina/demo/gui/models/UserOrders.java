@@ -5,7 +5,6 @@ public class UserOrders {
     private Long id;
     private String product;
     private Double price;
-
     public UserOrders() {
 
     }

@@ -16,11 +16,21 @@ import org.testng.Assert;
 
 public class OpenSauceDemoWeb extends CucumberRunner {
     HomePage homePage = new HomePage(getDriver());
-    ProductsPageBase productsPage = null;
 
-    @Given("I am on main page")
+
+    @Given("user is on login page")
     public void i_am_on_main_page() {
         homePage.open();
+
+//            UserOrders orders = user.getorders();
+//             String productName =  orders.getProduct();
+//             Assert.assertEquals(productName,"expectedListName");
+
+    }
+
+
+    @When("user enters username and password")
+    public void i_log_in() {
         try (SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession(true)) {
             UserMapper userMapper = session.getMapper(UserMapper.class);
             WebUsers user = userMapper.findById(1);
@@ -28,27 +38,13 @@ public class OpenSauceDemoWeb extends CucumberRunner {
             String pass = user.getPassword();
             homePage.setUserName(username);
             homePage.setUserPassWord(pass);
-
-//            UserOrdersMapper ordersMapper = session.getMapper(UserOrdersMapper.class);
-//            UserOrders orders = ordersMapper.findById(1);
-//            System.out.println(orders.getProduct());
-//            System.out.println("Some letters....");
-
-
-//            UserOrders orders = user.getorders();
-//             String productName =  orders.getProduct();
-//             Assert.assertEquals(productName,"expectedListName");
-
+//            homePage.clickLoginButton();
         }
     }
 
-    @When("I log in.")
-    public void i_log_in() {
-        productsPage = homePage.clickLoginButton();
-    }
-
-    @Then("Products page should be opened")
+    @Then("Product title must be present")
     public void products_page_should_be_opened() {
+        ProductsPageBase productsPage = initPage(getDriver(), ProductsPageBase.class);
         Assert.assertEquals(productsPage.getProductTitle(), "Products");
     }
 }

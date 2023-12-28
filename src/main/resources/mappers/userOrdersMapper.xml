@@ -5,10 +5,14 @@
 
 
     <select id="findById" resultMap="UserOrdersResultMap">
-        SELECT * FROM userorders WHERE id = #{id}
+        SELECT * FROM products WHERE id = #{id}
     </select>
     <select id="findOrdersByUserId" resultMap="UserOrdersResultMap">
-        SELECT * FROM webusers WHERE id = #{id}
+        SELECT * FROM products WHERE user_id = #{user_id}
+    </select>
+
+    <select id="findUserByOrderId" resultMap="UserOrdersResultMap">
+        SELECT * FROM webusers WHERE user_id = #{id}
     </select>
     <!--    Consulta de las ordenes similar a anterior-->
 
