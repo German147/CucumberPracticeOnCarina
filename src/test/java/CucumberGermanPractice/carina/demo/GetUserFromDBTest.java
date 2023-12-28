@@ -1,18 +1,20 @@
 package CucumberGermanPractice.carina.demo;
 
 import CucumberGermanPractice.carina.demo.gui.ConnectionFactory;
+import CucumberGermanPractice.carina.demo.gui.desktop.HomePage;
 import CucumberGermanPractice.carina.demo.gui.models.UserMapper;
 import CucumberGermanPractice.carina.demo.gui.models.UserOrders;
 import CucumberGermanPractice.carina.demo.gui.models.UserOrdersMapper;
 import CucumberGermanPractice.carina.demo.gui.models.WebUsers;
 import com.zebrunner.agent.core.annotation.TestLabel;
+import com.zebrunner.carina.core.IAbstractTest;
 import org.apache.ibatis.session.SqlSession;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class GetUserFromDBTest {
-
+public class GetUserFromDBTest implements IAbstractTest {
+    HomePage homePage = new HomePage(getDriver());
     @Test
     @TestLabel(name = "feature", value = "database")
     public void getUserTest() {
@@ -40,10 +42,11 @@ public class GetUserFromDBTest {
             List<UserOrders> userOrdersList2 = orderMapper.findOrdersByUserId(1);
             for (UserOrders order : userOrdersList2){
                 System.out.println("The product is: " + order.getProduct());
-                System.out.println("Its ID is: "+order.getId());
-                System.out.println("Its price is: "+order.getPrice());
-                System.out.println("---------------------");
+//                System.out.println("Its ID is: "+order.getId());
+//                System.out.println("Its price is: "+order.getPrice());
+//                System.out.println("---------------------");
             }
         }
     }
+
 }
