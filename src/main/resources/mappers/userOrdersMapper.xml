@@ -7,7 +7,9 @@
     <select id="findById" resultMap="UserOrdersResultMap">
         SELECT * FROM userorders WHERE id = #{id}
     </select>
-
+    <select id="findOrdersByUserId" resultMap="UserOrdersResultMap">
+        SELECT * FROM webusers WHERE id = #{id}
+    </select>
     <!--    Consulta de las ordenes similar a anterior-->
 
 
@@ -16,7 +18,6 @@
         <id column="id" property="id"/>
         <result column="product" property="product"/>
         <result column="price" property="price"/>
-        <result column="user_id" property="userId"/>
     </resultMap>
 
 </mapper>

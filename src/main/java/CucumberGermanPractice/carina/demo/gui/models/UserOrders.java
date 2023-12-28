@@ -5,15 +5,6 @@ public class UserOrders {
     private Long id;
     private String product;
     private Double price;
-    private Long userId;
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 
     public UserOrders() {
 
@@ -41,5 +32,14 @@ public class UserOrders {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "UserOrders{" +
+                "id=" + id +
+                ", product='" + product + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

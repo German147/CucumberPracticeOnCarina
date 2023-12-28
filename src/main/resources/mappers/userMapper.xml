@@ -11,11 +11,18 @@
         SELECT * FROM webusers WHERE username = #{username}
     </select>
 
+    <select id="findOrdersByUserId" resultMap="UserResultMap">
+        SELECT * FROM webusers WHERE ID = #{id}
+    </select>
+
+
     <resultMap type="CucumberGermanPractice.carina.demo.gui.models.WebUsers"
                id="UserResultMap" autoMapping="false">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="password" property="password"/>
+        <result column="order" property="order_id"/>
+
     </resultMap>
 
 </mapper>

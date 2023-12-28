@@ -19,7 +19,18 @@ public class GetUserFromDBTest {
         try (SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession(true)) {
             UserMapper userMapper = session.getMapper(UserMapper.class);
             WebUsers user = userMapper.findById(2);
-            System.out.println("UserName is: " + user.getUsername() + " and its password is: " + user.getPassword());
+            System.out.println("Username is: " + user.getUsername());
+            List<UserOrders> userOrdersList = user.getOrders();
+            for (UserOrders o : userOrdersList)
+                System.out.println("Printing the product from the list" + o.getProduct());
+            System.out.println("------------Only using order session here--------");
+            UserOrdersMapper orderMapper = session.getMapper(UserOrdersMapper.class);
+            UserOrders ordersList = orderMapper.findById(2);
+            System.out.print("Order product: " + ordersList.getProduct());
+
+            List<UserOrders> userOrdersList2 = orderMapper.findOrdersByUserId(1);
+            for (UserOrders order : userOrdersList2)
+                System.out.println("The product is: " + order.getProduct());
 
         }
     }
@@ -27,11 +38,21 @@ public class GetUserFromDBTest {
     @Test
     public void getOrdersTest() {
         try (SqlSession session = ConnectionFactory.getSqlSessionFactory().openSession(true)) {
-            UserOrdersMapper orderMappers = session.getMapper(UserOrdersMapper.class);
-            UserOrders order = orderMappers.findById(1);
-            System.out.println(order.getProduct());
-            float userId = order.getUserId();
-            System.out.println(userId);
+            UserMapper userMapper = session.getMapper(UserMapper.class);
+            List<UserOrders> userOrders = userMapper.findOrdersByUserId(2);
+            for (UserOrders o : userOrders)
+                System.out.println("Product: "+o.getProduct());
+            int size = userOrders.size();
+            System.out.println(size);
+
+
+//            UserOrdersMapper orderMappers = session.getMapper(UserOrdersMapper.class);
+//            System.out.println(order.getProduct());
+//            float userId = order.getUserId();
+//            System.out.println(userId);
+//
+//            List<WebUsers> webUsersList = order.getWebUsers();
+//            System.out.println("The webUserList size is " + webUsersList.size());
         }
     }
 }
